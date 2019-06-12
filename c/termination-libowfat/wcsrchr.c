@@ -4,15 +4,16 @@
 
 #define __unlikely(x) (x)
 #define __likely(x) (x)
-#define wchar_t int
+/* for libTooling compatible
+#define wchar_t int */
 
 extern int __VERIFIER_nondet_int(void);
 
-wchar_t* wcsrchr(const wchar_t *wcs, wchar_t wc) {
-  wchar_t* last=0;
+int* wcsrchr(const int *wcs, int wc) {
+  int* last=0;
   for (; *wcs; ++wcs)
     if (*wcs == wc)
-      last=(wchar_t*)wcs;
+      last=(int*)wcs;
   return last;
 }
 
@@ -20,8 +21,8 @@ wchar_t* wcsrchr(const wchar_t *wcs, wchar_t wc) {
 int main(){
   int in_len = __VERIFIER_nondet_int();
   if(in_len < 1){return 1;}
-  wchar_t* hay = alloca(in_len*sizeof(wchar_t));
+  int* hay = alloca(in_len*sizeof(int));
   hay[in_len-1]=0;
-  wchar_t needle = __VERIFIER_nondet_int();
+  int needle = __VERIFIER_nondet_int();
   return (int) wcsrchr(hay, needle);
 }
